@@ -1,0 +1,331 @@
+/* --- RESET --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.5;
+  background: #f9f9f9;
+  color: #333;
+}
+
+/* --- HEADER --- */
+header {
+  text-align: center;
+  position: relative;
+}
+
+/* --- HERO SECTION --- */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Hero background image fade-in (only when visible) */
+.hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transform: scale(1.05);
+  transition: opacity 1.2s ease, transform 1.8s ease;
+}
+
+.hero.visible img {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Overlay */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.hero.visible .hero-overlay {
+  opacity: 1;
+}
+
+/* --- HERO CONTENT --- */
+.hero-content {
+  position: fixed;
+  top: 25px;
+  left: 40px;
+  right: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(20, 20, 40, 0.45);
+  border-radius: 12px;
+  padding: 15px 30px;
+  backdrop-filter: blur(6px);
+  color: white;
+  z-index: 1000;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+  animation: fadein 1s ease-in forwards;
+}
+
+.hero-content.scrolled {
+  background: rgba(20, 20, 40, 0.75);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.hero-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hero-title i {
+  font-size: 1.8rem;
+  color: #b5baff;
+}
+
+.hero-title h1 {
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.hero-nav a {
+  margin-left: 25px;
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: opacity 0.3s;
+}
+
+.hero-nav a i {
+  margin-right: 6px;
+}
+
+.hero-nav a:hover {
+  opacity: 0.75;
+}
+
+/* --- ABOUT SECTION --- */
+.about-section {
+  position: relative;
+  background: url("images/DankMemDog1.jpg") center/cover no-repeat;
+  color: white;
+  padding: 120px 20px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.about-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 1;
+}
+
+.about-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  margin: 0 auto;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1.2s ease, transform 1.2s ease;
+}
+
+.about-section.visible .about-content {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.about-content h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.about-content p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 10px;
+  backdrop-filter: blur(5px);
+}
+
+/* --- CONTACT SECTION --- */
+.contact-section {
+  position: relative;
+  background: url("images/Reality marble.png") center/cover no-repeat;
+  color: white;
+  padding: 100px 20px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.contact-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 1;
+}
+
+.contact-content {
+  position: relative;
+  z-index: 2;
+  max-width: 600px;
+  margin: 0 auto;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1.2s ease, transform 1.2s ease;
+}
+
+.contact-section.visible .contact-content {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.contact-content h2 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  font-family: 'Poppins', sans-serif;
+}
+
+#contact-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#contact-form input,
+#contact-form textarea {
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  background: rgba(178, 255, 255, 0.85);
+  color: #333;
+  font-size: 1rem;
+  transition: background 0.3s ease;
+}
+
+#contact-form input:focus,
+#contact-form textarea:focus {
+  background: rgba(255, 255, 255, 1);
+  outline: none;
+}
+
+#contact-form button {
+  background: #2d2053;
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s;
+}
+
+#contact-form button:hover {
+  background: #3c2a6d;
+}
+
+/* --- GALLERY PAGE (VERTICAL LAYOUT) --- */
+.subpage-header {
+  background: #111;
+  color: white;
+  text-align: center;
+  padding: 40px 20px;
+  position: relative;
+  animation: fadein 1.2s ease-in forwards;
+}
+
+.subpage-header nav {
+  margin-top: 10px;
+}
+
+.subpage-header nav a {
+  color: #ddd;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.3s;
+}
+
+.subpage-header nav a:hover {
+  color: #fff;
+}
+
+#gallery-page {
+  padding: 60px 20px;
+  background: #2e2e2e;
+}
+
+.gallery-grid {
+  display: flex;
+  flex-direction: column; /* stack vertically */
+  align-items: center;
+  gap: 40px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.gallery-grid img {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.gallery-grid img.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.gallery-grid img:hover {
+  transform: scale(1.02);
+  transition: transform 0.3s ease;
+}
+
+/* --- FOOTER --- */
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #222;
+  color: #ccc;
+  font-size: 0.9rem;
+}
+
+/* --- ALERT MESSAGES --- */
+.alert-message {
+  margin-bottom: 15px;
+  padding: 12px;
+  border-radius: 6px;
+  text-align: center;
+  font-weight: bold;
+  animation: fadein 0.5s ease-in-out;
+}
+
+.alert-message.success {
+  background: rgba(0, 255, 127, 0.9);
+  color: #003300;
+}
+
+.alert-message.error {
+  background: rgba(255, 99, 71, 0.9);
+  color: #330000;
+}
+
+/* --- ANIMATION --- */
+@keyframes fadein {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
